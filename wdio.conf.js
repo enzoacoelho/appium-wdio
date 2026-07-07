@@ -62,16 +62,27 @@ export const config = {
         ]
     ],
 
-    capabilities: [{
-        platformName: 'Android',
-        browserName: 'Chrome',
-        'appium:deviceName': 'R9XX801GP8Z',
-        'appium:platformVersion': '15.0',
-        'appium:automationName': 'UiAutomator2',
-        // Garanta que esta linha esteja escrita exatamente em camelCase se o WDIO exigir
-        'appium:chromedriverAutodownload': true,
-        'appium:chromedriverExecutable': './chromedriver-mobile/chromedriver.exe'
-    }],
+    capabilities: [
+      /*   {
+            platformName: 'Android',
+            browserName: 'Chrome',
+            'appium:deviceName': 'R9XX801GP8Z',
+            'appium:platformVersion': '15.0',
+            'appium:automationName': 'UiAutomator2',
+            // Garanta que esta linha esteja escrita exatamente em camelCase se o WDIO exigir
+            'appium:chromedriverAutodownload': true,
+            'appium:chromedriverExecutable': './chromedriver-mobile/chromedriver.exe'
+        }, */
+        {
+            "platformName": "Android",
+            "appium:automationName": "UiAutomator2",
+            "appium:deviceName": "R9XX801GP8Z",
+            "appium:platformVersion": "15.0",
+            "appium:uiautomator2ServerInstallTimeout": 60000,
+            "appium:ensureWebviewsHavePages": true,
+            "appium:app": "./app/app-wdio.apk"
+        }
+    ],
 
     //
     // ===================
