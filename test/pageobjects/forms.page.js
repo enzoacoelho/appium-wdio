@@ -33,11 +33,33 @@ class FormsPage {
         return await this.dropDown.getText()
     }
 
-    async validaSwitchTexto () {
+    async validaSwitchTexto() {
         return await this.switchTexto.getText()
 
     }
 
+    async alterarSwith(estado) {
+
+        const botao = await this.switch
+
+        if (estado === 'on') {
+            await browser.swipe({
+                direction: 'right',
+                duration: 5000,
+                percent: 0.1,
+                scrollableElement: botao,
+            })
+
+        } else if (estado === 'off') {
+            await browser.swipe({
+                direction: 'left',
+                duration: 5000,
+                percent: 0.1,
+                scrollableElement: botao,
+            })
+        }
+
+    }
 }
 
 export default new FormsPage()

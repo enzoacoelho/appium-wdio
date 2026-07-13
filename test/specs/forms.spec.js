@@ -24,22 +24,18 @@ describe('Funcionalidade: Formulários', () => {
 
     })
 
-    it.only('Deve trocar o switch de On para Off', async () => {
+    it('Deve trocar o switch de On para Off', async () => {
+        //valida que inicia com o switch OFF e mensagem para deixar ON
         expect(await formsPage.validaSwitchTexto()).toEqual('Click to turn the switch ON')
-        const botao = $('~switch')
 
-        //trocar para ON
-        await botao.click()
+        //chama metodo que muda para ON
+        await formsPage.alterarSwith('on')
+        //valida mensagem que o switch esta ON e pode ser alterado para OFF
         expect(await formsPage.validaSwitchTexto()).toEqual('Click to turn the switch OFF')
         await driver.pause(1000)
         
-        //trocar para OFF
-        await browser.swipe({
-            direction: 'left',                  // Swipe from right to left
-            duration: 5000,                     // Last for 5 seconds
-            percent: 0.1,                       // Swipe 50% of the scrollableElement
-            scrollableElement: botao,  // The element to swipe within
-        })
+        //chama metodo e muda para OFF
+        await formsPage.alterarSwith('off')
         expect(await formsPage.validaSwitchTexto()).toEqual('Click to turn the switch ON')
         await driver.pause(1000)
 
